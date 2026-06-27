@@ -48,7 +48,9 @@
     .ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 0 auto 16px; }
     .ba-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 600px; margin: 0 auto 32px; }
     .ba-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-    .ba-card img { width: 100%; height: 260px; object-fit: cover; }
+    .ba-card img { width: 100%; object-fit: cover; }
+    .ba-grid .ba-card img { height: 260px; }
+    .ba-grid-2 .ba-card img, .intimo-grid .ba-card img { height: auto; }
     .ba-card p { padding: 12px; font-weight: 700; font-size: 14px; color: var(--dark); }
     .ba-count { font-size: clamp(18px, 3vw, 26px); font-weight: 900; color: var(--gold); margin: 16px 0 8px; }
     .ba-section-title { font-family: 'Playfair Display', serif; font-size: clamp(18px, 3vw, 26px); color: var(--wine); font-weight: 900; margin: 40px 0 20px; }
@@ -113,8 +115,13 @@
     .price-box .lifetime { margin-top: 16px; font-size: 16px; font-weight: 900; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; line-height: 1.5; }
 
     /* CTA */
-    .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #000; font-weight: 900; font-size: clamp(16px, 2.5vw, 20px); padding: 18px 40px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 6px 24px rgba(201,168,76,0.45); transition: transform 0.2s, box-shadow 0.2s; }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,168,76,0.55); }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 6px 24px rgba(201,168,76,0.45); }
+      50% { transform: scale(1.05); box-shadow: 0 10px 36px rgba(201,168,76,0.7); }
+      100% { transform: scale(1); box-shadow: 0 6px 24px rgba(201,168,76,0.45); }
+    }
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #000; font-weight: 900; font-size: clamp(16px, 2.5vw, 20px); padding: 18px 40px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 6px 24px rgba(201,168,76,0.45); animation: pulse 1.8s ease-in-out infinite; }
+    .cta-btn:hover { animation: none; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,168,76,0.55); }
 
     /* ACESSO */
     .access-section { background: #fff; padding: 48px 20px; }
@@ -161,7 +168,8 @@
   <!-- HERO - CLAREAMENTO ÍNTIMO -->
   <div class="hero">
     <div class="container">
-      <h1>Volte ao tom natural da sua pele — rosto <em>e região íntima</em> — em menos de 21 Dias.</h1>
+      <img src="logo_21d_sem_melasma.png" alt="Logo 21D Desafio" style="max-width:280px; margin:0 auto 24px; mix-blend-mode: multiply;" />
+      <h1>Volte ao tom natural da sua pele — rosto <em>e região íntima</em> —<br />em menos de <span style="font-size:1.3em; color:var(--gold);">21 Dias.</span></h1>
       <ul class="hero-checks">
         <li>Clareamento total em 21 dias</li>
         <li>Sem ácidos agressivos</li>
@@ -178,14 +186,14 @@
   <div style="background:#fff; text-align:center;">
     <h2 class="headline-main">
       Seu melasma e suas manchas íntimas não são difíceis de tratar.<br />
-      <em>Você só nunca usou o protocolo certo.</em>
+    <em>Você só nunca usou o protocolo certo.</em>
     </h2>
   </div>
 
   <!-- LOGO + SEM PROCEDIMENTO -->
   <div style="background: var(--off-white); padding: 36px 20px; text-align:center;">
     <img src="img_especialista.jpg" alt="Especialista" style="max-width:320px; margin:0 auto 24px; border-radius:12px;" />
-    <img src="logo_21d.png" alt="Logo 21D" style="max-width:200px; margin:0 auto 24px;" />
+
     <div class="badge-line">Sem procedimento.</div>
   </div>
 
@@ -228,7 +236,7 @@
 
       <!-- Íntimo -->
       <p class="ba-section-title">🌸 Clareamento Íntimo</p>
-      <div class="ba-grid">
+      <div class="ba-grid intimo-grid">
         <div class="ba-card">
           <img src="intimo_antes_depois_1.jpg" alt="Antes e depois íntimo Juliana" />
           <p>Juliana, <strong>22 dias de protocolo.</strong></p>
@@ -273,9 +281,15 @@
   <div class="bridge-section">
     <div class="container">
       <h2>Agora eu te pergunto…</h2>
-      <h2 style="margin-bottom:28px;">Se em <em>apenas 21 dias</em> você pudesse clarear suas manchas no rosto <em>e na região íntima,</em> isso mudaria a forma como você se vê?</h2>
+      <h2 style="margin-bottom:28px;">Se em <em>apenas <span style="font-size:1.2em;">21 dias</span></em> você pudesse clarear suas manchas no rosto <em>e na região íntima,</em> isso mudaria a forma como você se vê?</h2>
       <div class="answer-box">Se sua resposta for "SIM"…</div>
-      <p>O Desafio 21D é pra você.</p>
+      <p style="margin-bottom:28px;">O Desafio 21D é pra você.</p>
+      <div style="background: var(--dark); width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 40px 20px; text-align:center;">
+        <div style="font-size: clamp(28px, 6vw, 48px); font-weight: 900; color: var(--gold); font-family: 'Playfair Display', serif;">12x de R$ 6,93</div>
+        <div style="font-size: clamp(15px, 2.2vw, 18px); color: #ccc; margin-top: 6px;">ou R$ 67,00 à vista</div>
+        <div style="margin-top: 16px; font-size: 16px; font-weight: 900; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; line-height: 1.5;">ACESSO VITALÍCIO!!<br />VOCÊ SÓ PAGA UMA ÚNICA VEZ!!!</div>
+        <a href="https://pay.kiwify.com.br/XMxQqYS" class="cta-btn" style="margin-top:28px; display:inline-block;">QUERO CLAREAR MINHAS MANCHAS</a>
+      </div>
     </div>
   </div>
 
@@ -285,7 +299,7 @@
   <div style="background:#fff;">
     <div class="steps-intro">
       <h2>Um protocolo científico, estruturado e fácil de seguir através do nosso app.</h2>
-      <h3>Esses são os <em>3 passos para você transformar sua pele em apenas 21D.</em></h3>
+      <h3>Esses são os <em>3 passos para você transformar sua pele em apenas <span style="font-size:1.15em;">21D.</span></em></h3>
     </div>
 
     <div class="step-card">
@@ -352,9 +366,9 @@
   <!-- ESPECIALISTA -->
   <div class="expert-section">
     <div class="expert-inner container">
-      <img src="dra_raphaela.jpg" alt="Dra. Raphaela Bevilaqua" />
+      <img src="dra_raphaela.jpg" alt="Dra. Raphaela" />
       <div>
-        <h2>Eu sou a <strong>Dra. Raphaela Bevilaqua.</strong></h2>
+        <h2>Eu sou a <strong>Dra. Raphaela.</strong></h2>
         <h3>Criadora do Protocolo 21D</h3>
         <p>Como especialista em saúde da pele, eu via dezenas de mulheres no consultório sofrendo com melasma no rosto e com manchas nas regiões íntimas — duas situações que destroem a autoestima.</p>
         <p style="margin-top:10px;">Com mais de 8 anos de experiência e mais de 2.350 mulheres atendidas, desenvolvi o Protocolo 21D para democratizar o acesso a um tratamento clínico real, acessível e sem efeito rebote.</p>
@@ -466,7 +480,7 @@
   </div>
 
   <footer>
-    <p>Copyright © 2024 · Todos os Direitos Reservados · CNPJ: 49.789.057/0001-00 · Belo Horizonte</p>
+    <p>Copyright © 2024 · Todos os Direitos Reservados · Belo Horizonte</p>
   </footer>
 
 </body>
